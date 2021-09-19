@@ -28,4 +28,4 @@ export default function AppFormField(props: any) {
             {hasError && <Text style={{color: "red"}}>{errors[name]}</Text>}
         </>
     )
-}
+};

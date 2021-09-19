@@ -11,18 +11,18 @@ interface IAppB {
     handleSubmit: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 }
 
-const  AppFormSubmitButton = ({ title }: AppFormSubmitButtonProps ): 
+const AppFormSubmitButton = ({ title }: AppFormSubmitButtonProps):
     JSX.Element => {
-        const { handleSubmit, isValid } = useFormikContext();
-        return (
-            <Button
-                title={title}
-                // to get rid of  typing issue for OnPress.
-                onPress={(handleSubmit as unknown) as (IAppB['handleSubmit'])}
-                disabled={!isValid}    
-            >
-            </Button>
-        )
-} 
+    const { handleSubmit, isValid } = useFormikContext();
+    return (
+        <Button
+            title={title}
+            // to get rid of  typing issue for OnPress.
+            onPress={(handleSubmit as unknown) as (IAppB['handleSubmit'])}
+            disabled={!isValid}
+        >
+        </Button>
+    )
+}
 
 export default AppFormSubmitButton;
