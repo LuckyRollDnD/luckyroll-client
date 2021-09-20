@@ -25,7 +25,17 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Home" screenOptions={{
+              headerStyle: {
+                backgroundColor: '#rgba(19, 191, 205, .7)',
+                
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            
+          }}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
