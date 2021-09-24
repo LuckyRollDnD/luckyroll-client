@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
 import HomeScreen from './src/screens/HomeScreen';
 import Register from './src/screens/Register';
+import { colorScheme } from './src/styles/colors';
 
 const cache = new InMemoryCache()
 
@@ -24,19 +25,21 @@ export default function App() {
 
   return (
     <ApolloProvider client={client}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={{
-              headerStyle: {
-                backgroundColor: '#rgba(19, 191, 205, .7)',
-                
+      <NavigationContainer >
+        <Stack.Navigator initialRouteName="LuckyRoll" screenOptions={{
+
+              headerShadowVisible: false,
+              headerLargeStyle: {
+                backgroundColor: colorScheme.primary,
               },
-              headerTintColor: '#fff',
+              headerLargeTitle: true,
               headerTitleStyle: {
                 fontWeight: 'bold',
+                color: colorScheme.white,
               },
             
           }}>
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="LuckyRoll" component={HomeScreen} />
           <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
       </NavigationContainer>

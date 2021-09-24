@@ -1,4 +1,22 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "baseUrl": "./",
+    "jsx": "react",
+    "lib": ["es5", "es6", "dom"],
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es5",
+    "typeRoots": [
+      "custom_typings"
+    ]
+  },
   "extends": "expo/tsconfig.base"
 }
+
+
+
+  // "include": ["./src/**/*.tsx"],
+  // "exclude": ["dist", "build", "node_modules"]

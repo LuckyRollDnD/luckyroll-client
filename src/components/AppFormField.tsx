@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, TextInput } from "react-native";
+import { Text, TextInput, StyleSheet } from "react-native";
+import { Inputs } from "../styles";
 
 export default function AppFormField(props: any) {
     const {
@@ -11,9 +12,15 @@ export default function AppFormField(props: any) {
 
     const hasError = errors[name] && touched[name];
 
+    const styles = StyleSheet.create({
+        textInput: {
+            ...Inputs.formInput,
+        },
+    })
     return (
         <>
             <TextInput 
+                style={styles.textInput}
                 placeholder={placeholder}
                 onChangeText={text => onChange(name)(text)}
                 onBlur={() => {
@@ -25,7 +32,7 @@ export default function AppFormField(props: any) {
                value={value}
                {...inputProps}
             />
-            {hasError && <Text style={{color: "red"}}>{errors[name]}</Text>}
+            <Text style={{color: "red", height: 25}}>{hasError && errors[name]}</Text>
         </>
     )
 };

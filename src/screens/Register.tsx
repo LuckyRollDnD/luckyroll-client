@@ -3,38 +3,33 @@ import * as Yup from "yup";
 import React from "react";
 import { Formik, Field } from 'formik';
 import { Text, View, StyleSheet } from 'react-native';
-
 import AppFormField from '../components/AppFormField';
 import AppFormSubmitButton from '../components/AppFormSubmitButton';
-import { SafeAreaView } from "react-native-safe-area-context";
-
+import { Inputs } from "../styles";
+import { colorScheme } from "../styles/colors";
 const styles = StyleSheet.create({
 
     loginContainer: {
-        width: '100%',
-        height: "100%",
-        alignItems: 'center',
-        backgroundColor: '#rgba(19, 191, 205, .7)',
+        flex: 1,
+        backgroundColor: colorScheme.primary,
+        alignItems: "center",
     },
     inner: {
-        top: 60,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "white",
-        width: '100%',
-        height: '80%',
+        backgroundColor: colorScheme.white,
+        width: 300,
+        marginVertical: 40,
+        borderRadius: 20,
         padding: 10,
-        borderRadius: 40,
+        flex: 1,
     },
-    textInput: {
-        height: 40,
-        width: '100%',
-        margin: 10,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: "transparent",
-        borderBottomColor: "#e5e5e5",
-        borderRadius: 10,
-    },
+
+    label: {
+        color: colorScheme.grey,
+        textAlign: "left",
+        width: "90%",
+    }
 })
 
 
@@ -62,6 +57,32 @@ interface FormValues {
     confirmPassword: string
 }
 
+const inputs = [
+    {
+        component: AppFormField,
+        name: "email",
+        placeholder: "Email",
+        autoCompleteType: "email",
+        keyboardType: "email-address",
+        textContentType: "emailAddress",
+    },
+    {
+        component: AppFormField,
+        name: "password",
+        placeholder: "Password",
+        secureTextEntry: true,
+        textContentType: "password"
+    },
+    {
+        component: AppFormField,
+        name: "confirmPassword",
+        placeholder: "Confirm Password",
+        secureTextEntry: true,
+        textContentType: "password"
+    }
+];
+
+
 export default function Register() {
 
     const initialValues: FormValues = {
@@ -71,7 +92,8 @@ export default function Register() {
     }
 
     return (
-        <SafeAreaView style={styles.loginContainer}>
+        <View style={styles.loginContainer}>
+
             <View style={styles.inner}>
                 <Formik
                     initialValues={initialValues}
@@ -86,36 +108,26 @@ export default function Register() {
                         touched,
                     }) => (
                         <>
-                            <Field
-                                style={styles.textInput}
-                                placeholderTextColor={styles.textInput.color}
-                                component={AppFormField}
-                                name="email"
-                                placeholder="Email"
-                                autoCompleteType="email"
-                                keyboardType="email-address"
-                                textContentType="emailAddress"
-                            />
-                            <Field
-                                component={AppFormField}
-                                name="password"
-                                placeholder="Password"
-                                secureTextEntry
-                                textContentType="password"
-                            />
-                            <Field
-                                component={AppFormField}
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                secureTextEntry
-                                textContentType="password"
-                            />
+                            {inputs.map((input, id) => (
+                                <>
+                                    <Text key={id} style={styles.label}>{input.placeholder}</Text>
+                                    <Field
+                                        key={input.name}
+                                        component={input.component}
+                                        name={input.name && input.name}
+                                        autoCompleteType={input.autoCompleteType && input.autoCompleteType}
+                                        keyboardType={input.keyboardType && input.keyboardType}
+                                        textContentType={input.textContentType && input.textContentType} secureTextEntry={input.secureTextEntry && input.secureTextEntry}
+
+                                    />
+                                </>
+                            ))}
 
                             <AppFormSubmitButton title="Submit" />
                         </>
                     )}
                 </Formik>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
