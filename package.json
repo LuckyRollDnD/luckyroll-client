@@ -1,11 +1,13 @@
 {
   "dependencies": {
-    "@apollo/client": "^3.4.12",
+    "@apollo/client": "^3.4.13",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
+    "apollo-link-token-refresh": "^0.3.2",
     "expo": "~42.0.0",
     "formik": "^2.2.9",
     "graphql": "^15.5.3",
+    "jwt-decode": "^3.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",

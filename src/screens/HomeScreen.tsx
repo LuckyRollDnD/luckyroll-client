@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, Button, ImageBackground, Image, StyleSheet, TouchableOpacity } from "react-native";
-// import { useHelloQuery } from "../generated/graphql";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import DndDice from "../assets/dnd_dice.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colorScheme } from "../styles/colors";
@@ -36,28 +35,8 @@ const styles = StyleSheet.create({
 
 })
 
-// function CallToAction ({ navigation} ) {
-//     const { loading, data } = useHelloQuery();
-
-//     return (
-//         <>
-//             {(loading || !data) ? (
-//                 <Text>Loading...</Text>
-//             ) : (
-//                 <Text>{data.hello}</Text>
-//             )}
-//             <Button
-//                 title="Go to Register"
-//                 onPress={() => navigation.navigate("Register")}
-//             />
-//         </>
-//     )
-// };
 
 function HomeScreen({ navigation }) {
-
-    // const { loading, data } = useHelloQuery();
-
     return (
         <SafeAreaView style={styles.container}>
             <View style={{

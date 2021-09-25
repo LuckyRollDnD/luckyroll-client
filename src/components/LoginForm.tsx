@@ -5,6 +5,7 @@ import { Text, StyleSheet } from "react-native";
 import FormField from './Forms/FormField';
 import FormButton from './Forms/FormButton';
 import { colorScheme } from "../styles/colors";
+import { useLoginMutation } from "../generated/graphql";
 
 const styles = StyleSheet.create({
     label: {
@@ -50,25 +51,31 @@ const inputs = [
 
 
 function LoginForm() {
-
+    const [login] = useLoginMutation();
     const initialValues: FormValues = {
         email: "",
         password: "",
     };
 
+    async function handleLogin({email, password}) {
+        console.log({email})
+        const response = await login({
+            variables: {
+                email,
+                password
+            }
+        })
+        console.log({response});
+    }
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => console.log(values)}>
-            {({
-                handleChange,
-                handleBlur,
+            onSubmit={handleLogin}>
+            {(
                 handleSubmit,
-                values,
-                errors,
-                touched,
-            }) => (
+                isValid
+            ) => (
                 <>
                     {inputs.map((input, id) => (
                         <React.Fragment key={id}>
@@ -79,7 +86,6 @@ function LoginForm() {
                                 autoCompleteType={input.autoCompleteType && input.autoCompleteType}
                                 keyboardType={input.keyboardType && input.keyboardType}
                                 textContentType={input.textContentType && input.textContentType} secureTextEntry={input.secureTextEntry && input.secureTextEntry}
-
                             />
                         </React.Fragment>
                     ))}

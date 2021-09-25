@@ -1,3 +1,5 @@
+import { colorScheme } from "./colors"
+
 export const boxShadow = {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -6,3 +8,7 @@ export const boxShadow = {
     elevation: 5,
 }
 
+export const container = {
+    flex: 1, 
+    backgroundColor: colorScheme.primary,
+}

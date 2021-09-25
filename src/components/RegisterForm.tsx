@@ -5,6 +5,7 @@ import { Text, StyleSheet } from "react-native";
 import FormField from './Forms/FormField';
 import { colorScheme } from "../styles/colors";
 import FormButton from "./Forms/FormButton";
+import { useRegisterMutation } from "../generated/graphql";
 
 const styles = StyleSheet.create({
     label: {
@@ -65,6 +66,7 @@ const inputs = [
 
 
 function RegisterForm() {
+    const [register] = useRegisterMutation();
 
     const initialValues: FormValues = {
         email: "",
@@ -72,19 +74,29 @@ function RegisterForm() {
         confirmPassword: ""
     };
 
+    async function handleSubmit({email, password, confirmPassword}){
+        const response = await register({
+            variables: {
+                email,
+                password
+            }
+        });
+        console.log({response});
+    };
+
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => console.log(values)}>
-            {({
-                handleChange,
+            onSubmit={handleSubmit}>
+            {(    
+                 handleChange,
                 handleBlur,
                 handleSubmit,
                 values,
                 errors,
-                touched,
-            }) => (
+                isValid,
+            ) => (
                 <>
                     {inputs.map((input, id) => (
                         <React.Fragment key={id}>
