@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, TextInput, StyleSheet } from "react-native";
-import { Inputs } from "../styles";
+import { Inputs } from "../../styles";
 
-export default function AppFormField(props: any) {
+function FormField(props: any) {
     const {
         placeholder,
         field: { name, onBlur, onChange, value},
@@ -36,3 +36,4 @@ export default function AppFormField(props: any) {
         </>
     )
 };
+export default FormField;

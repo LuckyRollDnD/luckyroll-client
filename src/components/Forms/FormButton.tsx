@@ -1,9 +1,13 @@
 import { useFormikContext } from "formik";
 import React from "react";
-import { TouchableOpacity, NativeSyntheticEvent, NativeTouchEvent, StyleSheet, Text } from "react-native";
-import { Buttons } from "../styles";
-import {  largeSolidRed } from "../styles/buttons";
-import { colorScheme } from "../styles/colors";
+
+import { 
+    TouchableOpacity,
+    NativeSyntheticEvent,
+    NativeTouchEvent,
+    StyleSheet,
+    Text } from "react-native";
+import { Buttons } from "../../styles";
 
 const styles = StyleSheet.create({
     button: {
@@ -11,7 +15,7 @@ const styles = StyleSheet.create({
         ...Buttons.largeSolidRed,
     },
     text: {
-        ...Buttons.buttonText,
+        ...Buttons.buttonWhiteText,
     }
 })
 
@@ -23,7 +27,7 @@ interface IAppB {
     handleSubmit: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 }
 
-const AppFormSubmitButton = ({ title }: IProps) => {
+const FormButton = ({ title }: IProps) => {
     const { handleSubmit, isValid } = useFormikContext();
     return (
         <TouchableOpacity
@@ -37,4 +41,4 @@ const AppFormSubmitButton = ({ title }: IProps) => {
     )
 }
 
-export default AppFormSubmitButton;
+export default FormButton;

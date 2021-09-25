@@ -1,4 +1,4 @@
 import * as Buttons from './buttons';
 import * as Inputs from "./inputs";
-
-export  { Buttons, Inputs  };
+import * as Forms from "./forms";
+export  { Buttons, Inputs, Forms  };

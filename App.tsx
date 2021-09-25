@@ -3,10 +3,11 @@ import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import HomeScreen from './src/screens/HomeScreen';
 import Register from './src/screens/Register';
-import { colorScheme } from './src/styles/colors';
+import Login from './src/screens/Login';
+import { colorScheme } from "./src/styles/colors";
 
 const cache = new InMemoryCache()
 
@@ -29,10 +30,9 @@ export default function App() {
         <Stack.Navigator initialRouteName="LuckyRoll" screenOptions={{
 
               headerShadowVisible: false,
-              headerLargeStyle: {
+              headerStyle: {
                 backgroundColor: colorScheme.primary,
               },
-              headerLargeTitle: true,
               headerTitleStyle: {
                 fontWeight: 'bold',
                 color: colorScheme.white,
@@ -41,6 +41,7 @@ export default function App() {
           }}>
           <Stack.Screen name="LuckyRoll" component={HomeScreen} />
           <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
       </NavigationContainer>
 
