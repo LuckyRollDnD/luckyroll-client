@@ -13,7 +13,6 @@ import { colorScheme } from "./styles/colors";
 const Stack = createNativeStackNavigator();
 
 export default function ReactApp() {
-
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="LuckyRoll" screenOptions={{

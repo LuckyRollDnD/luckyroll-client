@@ -4,7 +4,7 @@ import DndDice from "../assets/dnd_dice.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colorScheme } from "../styles/colors";
 import { Buttons } from "../styles";
-
+import Header from "../components/Header";
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
@@ -50,6 +50,7 @@ function HomeScreen({ navigation }) {
                 backgroundColor: colorScheme.white,
                 alignItems: "center",
             }}>
+                <Header />
                 <TouchableOpacity
                     style={styles.loginButton}
                     onPress={() => navigation.navigate("Login")}
