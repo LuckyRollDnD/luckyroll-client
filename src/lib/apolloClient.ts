@@ -49,7 +49,7 @@ const client = new ApolloClient({
 				}
 
 				try {
-					const { exp } = jwtDecode(token);
+					const { exp }: any = jwtDecode(token);
 					if (Date.now() >= exp * 1000) {
 						return false;
 					} else {

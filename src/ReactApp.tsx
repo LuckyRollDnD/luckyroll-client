@@ -8,14 +8,16 @@ import Login from './screens/Login';
 import  DndSession  from './screens/DndSession';
 
 import { colorScheme } from "./styles/colors";
+import { useMeQuery } from './generated/graphql';
 
 
 const Stack = createNativeStackNavigator();
-
 export default function ReactApp() {
+    const {data, loading} = useMeQuery();
+
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="LuckyRoll" screenOptions={{
+            <Stack.Navigator screenOptions={{
                 headerShadowVisible: false,
                 headerStyle: {
                     backgroundColor: colorScheme.primary,
@@ -25,10 +27,17 @@ export default function ReactApp() {
                     color: colorScheme.white,
                 },
             }}>
-                <Stack.Screen name="LuckyRoll" component={HomeScreen} />
-                <Stack.Screen name="Register" component={Register} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Session" component={DndSession} />
+                {data?.me ? (
+                    <>
+                    <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="Register" component={Register} />
+                    </>
+                    ): (
+                        <>
+                        <Stack.Screen name="LuckyRoll" component={HomeScreen} />
+                        <Stack.Screen name="Session" component={DndSession} />
+                    </>
+                )}
             </Stack.Navigator>
         </NavigationContainer>
     );
