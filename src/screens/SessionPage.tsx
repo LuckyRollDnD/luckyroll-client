@@ -11,12 +11,10 @@ interface IProps {
 
 }
 
-const DndSession: React.FC<IProps> = () => {
+export default function SessionPage(){
         return (
             <View>
                 <Text>DndSession!</Text>
             </View>
         );
 }
-
-export default DndSession;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { Formik, Field } from 'formik';
 import { Text, StyleSheet } from "react-native";
@@ -6,6 +6,7 @@ import FormField from './Forms/FormField';
 import { colorScheme } from "../styles/colors";
 import FormButton from "./Forms/FormButton";
 import { useRegisterMutation } from "../generated/graphql";
+import { AppRoutes } from "../navigation/appRoutes";
 
 const styles = StyleSheet.create({
     label: {
@@ -65,8 +66,9 @@ const inputs = [
 ];
 
 
-function RegisterForm() {
+function RegisterForm({navigation}) {
     const [register] = useRegisterMutation();
+    const [errMessage, serErrMessage] = useState("")
 
     const initialValues: FormValues = {
         email: "",
@@ -74,14 +76,21 @@ function RegisterForm() {
         confirmPassword: ""
     };
 
-    async function handleSubmit({email, password, confirmPassword}){
-        const response = await register({
-            variables: {
-                email,
-                password
-            }
-        });
-        console.log({response});
+    async function handleSubmit({ email, password, confirmPassword }) {
+
+        try {
+            const response = await register({
+                variables: {
+                    email,
+                    password
+                }
+            });
+            navigation.navigate(AppRoutes.LANDING);
+
+        } catch (err) {
+            const message = err.message;
+            serErrMessage(err.message);
+        }
     };
 
     return (
@@ -89,8 +98,8 @@ function RegisterForm() {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}>
-            {(    
-                 handleChange,
+            {(
+                handleChange,
                 handleBlur,
                 handleSubmit,
                 values,
@@ -111,6 +120,7 @@ function RegisterForm() {
                         </React.Fragment>
                     ))}
                     <FormButton title="Register" />
+                    {errMessage.length > 0 && <Text>{errMessage}</Text>}
                 </>
             )}
         </Formik>

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import { ApolloProvider } from '@apollo/client';
-import { setAccessToken } from "./src/utils/accessToken";
-import { client } from './src/utils/apolloClient';
-import ReactApp from './src/ReactApp';
-
-
-
+import { setAccessToken } from "./src/lib/accessToken";
+import { client } from './src/lib/apolloClient';
+import Navigator from  "./src/navigation/Navigator";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +27,7 @@ export default function App() {
   }
   return (
     <ApolloProvider client={client}>
-      <ReactApp />
+      <Navigator />
     </ApolloProvider>
   );
 }

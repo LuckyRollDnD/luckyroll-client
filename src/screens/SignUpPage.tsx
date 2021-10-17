@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
 
 
 
-export default function Register() {
+export default function SignUpPage({navigation}) {
     return (
         <View style={styles.loginContainer}>
             <View style={styles.inner}>
-                <RegisterForm />
+                <RegisterForm navigation={navigation}/>
             </View>
         </View>
     )

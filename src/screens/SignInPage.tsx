@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 
 
-export default function Login() {
+export default function SignInPage() {
     return (
         <View style={styles.loginContainer}>
             <View style={styles.inner}>

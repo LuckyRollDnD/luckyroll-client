@@ -31,7 +31,8 @@ function FormField(props: any) {
                autoCorrect={false}
                value={value}
                {...inputProps}
-            />{hasError &&
+            />
+            {hasError &&
                 <Text style={{color: "red", height: 25}}>{errors[name]}</Text>
             }
         </>

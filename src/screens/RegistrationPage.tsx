@@ -5,6 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colorScheme } from "../styles/colors";
 import { Buttons } from "../styles";
 import Header from "../components/Header";
+import { AppRoutes } from "../navigation/appRoutes";
+
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
 })
 
 
-function HomeScreen({ navigation }) {
+function RegistrationPage({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{
@@ -53,15 +55,15 @@ function HomeScreen({ navigation }) {
                 <Header />
                 <TouchableOpacity
                     style={styles.loginButton}
-                    onPress={() => navigation.navigate("Login")}
+                    onPress={() => navigation.navigate(AppRoutes.SIGNIN_SCREEN)}
                 >
                     <Text style={styles.loginText}>
-                        Login
+                        Sign In
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.registerButton}
-                    onPress={() => navigation.navigate("Register")}
+                    onPress={() => navigation.navigate(AppRoutes.SIGNUP_SCREEN)}
                 >
                     <Text style={styles.registerText}>
                         Sign Up
@@ -72,4 +74,4 @@ function HomeScreen({ navigation }) {
     )
 }
 
-export default HomeScreen;
+export default RegistrationPage;
