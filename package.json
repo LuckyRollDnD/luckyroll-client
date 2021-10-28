@@ -1,16 +1,25 @@
 {
   "dependencies": {
-    "@apollo/client": "^3.4.12",
-    "@react-navigation/native": "^6.0.2",
-    "@react-navigation/native-stack": "^6.1.0",
-    "expo": "~42.0.0",
+    "@apollo/client": "^3.4.13",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.4",
+    "@react-navigation/stack": "^6.0.11",
+    "apollo-link-token-refresh": "^0.3.2",
+    "expo": "^41.0.0",
+    "formik": "^2.2.9",
     "graphql": "^15.5.3",
+    "jwt-decode": "^3.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-paper": "^4.9.2",
     "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "~3.4.0",
-    "react-native-web": "~0.13.12"
+    "react-native-screens": "~3.0.0",
+    "react-native-svg": "12.1.0",
+    "react-native-web": "~0.13.12",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

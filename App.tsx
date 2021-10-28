@@ -1,47 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
-import HomeScreen from './src/screens/HomeScreen';
-import Register from './src/screens/Register';
-
-const cache = new InMemoryCache()
-
-const url = 'http://localhost:4000/graphql'
-const client = new ApolloClient({
-  uri: url,
-  cache,
-  defaultOptions: { watchQuery: { fetchPolicy: 'cache-and-network' } },
-
-});
-
-
-const Stack = createNativeStackNavigator();
+import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
+import { ApolloProvider } from '@apollo/client';
+import { setAccessToken } from "./src/lib/accessToken";
+import { client } from './src/lib/apolloClient';
+import Navigator from  "./src/navigation/Navigator";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch("http://localhost:4000/refresh_token", {
+      method: "POST",
+      credentials: "include"
+    }).then(async x => {
+      const { accessToken } = await x.json();
+      console.log({accessToken});
+      setAccessToken(accessToken);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <Text>Loading...</Text>
+    )
+  }
   return (
     <ApolloProvider client={client}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Register" component={Register} />
-        </Stack.Navigator>
-      </NavigationContainer>
-
+      <Navigator />
     </ApolloProvider>
   );
 }
 
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
