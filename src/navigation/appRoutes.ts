@@ -3,5 +3,6 @@ export enum AppRoutes {
     SIGNIN_SCREEN = "Sign In",
     SIGNUP_SCREEN = "Sign Up",
     START_SESSION_SCREEN = "Start Session Screen",
-    SESSION_SCREEN = "Session"
+    SESSION_SCREEN = "Session",
+    DICE_SCREEN = "Dice"
 }

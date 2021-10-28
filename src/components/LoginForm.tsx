@@ -69,7 +69,7 @@ function LoginForm({navigation}) {
                 }
             })
             console.log({response});
-            navigation.navigate(AppRoutes.SESSION_SCREEN);
+            navigation.navigate(AppRoutes.START_SESSION_SCREEN);
 
         } catch(err) {
             setErrMessage(err.message);

@@ -1,6 +1,5 @@
 import React from "react"
 import { Text,TouchableOpacity, StyleSheet } from "react-native";
-import { AppRoutes } from "src/navigation/appRoutes";
 import { Buttons } from "../styles";
 
 const styles = StyleSheet.create({
@@ -16,11 +15,12 @@ const styles = StyleSheet.create({
 })
 
 
-const Button = ({navigation, text}) => {
+const Button = ({navigation, text, destination}) => {
+  console.log({destination});
   return (
     <TouchableOpacity
       style={styles.button}
-      onPress={() => console.log("Weoclome!")}
+      onPress={() => navigation.navigate(destination)}
     >
       <Text style={styles.text}>
         {text}
