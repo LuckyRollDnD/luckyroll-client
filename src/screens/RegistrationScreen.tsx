@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 })
 
 
-function RegistrationPage({ navigation }) {
+function RegistrationScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{
@@ -74,4 +74,4 @@ function RegistrationPage({ navigation }) {
     )
 }
 
-export default RegistrationPage;
+export default RegistrationScreen;

@@ -7,13 +7,10 @@ const styles = StyleSheet.create({
         ...Shared.container
     }
 })
-interface IProps {
 
-}
-
-export default function SessionPage(){
+export default function SessionScreen(){
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>DndSession!</Text>
             </View>
         );

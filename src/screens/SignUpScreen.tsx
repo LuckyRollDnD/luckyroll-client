@@ -2,9 +2,8 @@
 import React from "react";
 import { View, StyleSheet } from 'react-native';
 import { colorScheme } from "../styles/colors";
-import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 import { Forms } from "../styles";
-
 const styles = StyleSheet.create({
 
     loginContainer: {
@@ -19,11 +18,11 @@ const styles = StyleSheet.create({
 
 
 
-export default function SignInPage() {
+export default function SignUpScreen({navigation}) {
     return (
         <View style={styles.loginContainer}>
             <View style={styles.inner}>
-                <LoginForm />
+                <RegisterForm navigation={navigation}/>
             </View>
         </View>
     )

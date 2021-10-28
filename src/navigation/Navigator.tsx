@@ -3,9 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 import BottomTabNavigator from "./BottomTabNavigator";
-import SignInPage from "../screens/SignInPage";    
-import SignUpPage from "../screens/SignUpPage";
-import RegistrationPage from "../screens/RegistrationPage";
+import SignInScreen from "../screens/SignInScreen";    
+import SignUpScreen from "../screens/SignUpScreen";
+import RegistrationScreen from "../screens/RegistrationScreen";
 
 import { colorScheme } from "../styles/colors";
 import { AppRoutes } from "./appRoutes";
@@ -29,9 +29,9 @@ const AuthNavigator = () => {
         },
       }}
     >
-      <Stack.Screen name={AppRoutes.LANDING} component={RegistrationPage} />
-      <Stack.Screen name={AppRoutes.SIGNUP_SCREEN} component={SignUpPage} />
-      <Stack.Screen name={AppRoutes.SIGNIN_SCREEN} component={SignInPage} />
+      <Stack.Screen name={AppRoutes.LANDING} component={RegistrationScreen} />
+      <Stack.Screen name={AppRoutes.SIGNUP_SCREEN} component={SignUpScreen} />
+      <Stack.Screen name={AppRoutes.SIGNIN_SCREEN} component={SignInScreen} />
     </Stack.Navigator>
   )
 }

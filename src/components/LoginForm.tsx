@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Field } from 'formik';
 import { Text, StyleSheet } from "react-native";
@@ -6,6 +6,7 @@ import FormField from './Forms/FormField';
 import FormButton from './Forms/FormButton';
 import { colorScheme } from "../styles/colors";
 import { useLoginMutation } from "../generated/graphql";
+import { AppRoutes } from "../navigation/appRoutes";
 
 const styles = StyleSheet.create({
     label: {
@@ -50,22 +51,29 @@ const inputs = [
 ];
 
 
-function LoginForm() {
+function LoginForm({navigation}) {
     const [login] = useLoginMutation();
+    const [errMessage, setErrMessage] = useState("")
+
     const initialValues: FormValues = {
         email: "",
         password: "",
     };
 
     async function handleLogin({email, password}) {
-        console.log({email})
-        const response = await login({
-            variables: {
-                email,
-                password
-            }
-        })
-        console.log({response});
+        try {
+            const response = await login({
+                variables: {
+                    email,
+                    password
+                }
+            })
+            console.log({response});
+            navigation.navigate(AppRoutes.SESSION_SCREEN);
+
+        } catch(err) {
+            setErrMessage(err.message);
+        }
     }
     return (
         <Formik
@@ -90,6 +98,7 @@ function LoginForm() {
                         </React.Fragment>
                     ))}
                     <FormButton title="Login" />
+                    <Text>{errMessage && errMessage}</Text>
                 </>
             )}
         </Formik>
